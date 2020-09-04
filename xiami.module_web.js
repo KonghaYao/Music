@@ -416,3 +416,4 @@ var o = (function () {
         });
     return createOutputMethod;
 })();
+export default o;
