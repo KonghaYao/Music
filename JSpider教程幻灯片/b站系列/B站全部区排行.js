@@ -52,3 +52,4 @@ async function getRanks() {
     // 直接进行下载
     await downloadExcel(result, "B站全区排行-" + new Date().getTime());
 }
+export { getRanks };
