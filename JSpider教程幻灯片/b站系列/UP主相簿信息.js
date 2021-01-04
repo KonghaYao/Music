@@ -31,3 +31,4 @@ async function getUPPicbook(BID, delay = 100, limits = 1) {
     // 下面的部分为固定不变的部分，可以复用
     await downloadSheet(afterParse, "B站UP主" + BID + "的相簿信息");
 }
+export { getUPPicbook };

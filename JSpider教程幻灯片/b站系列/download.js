@@ -9,7 +9,7 @@ function downloadSheet(afterParse, name) {
 function downloadExcel(json, name) {
     let newbook = XLSX.utils.book_new();
 
-    Object.entries(json).forEach((sheetName, result) => {
+    Object.entries(json).forEach(([sheetName, result]) => {
         let sheet = XLSX.utils.json_to_sheet(result);
         XLSX.utils.book_append_sheet(newbook, sheet, sheetName);
     });

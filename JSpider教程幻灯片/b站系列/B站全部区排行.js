@@ -27,7 +27,7 @@ async function getRanks(limits = 1, delay = 0) {
         returnType: "text",
         type: "start",
         options: {
-            cache: "force-cache",
+            cache: "force-cache", // 强制从缓存中取出结果
         },
         limits,
         time: delay,
@@ -41,6 +41,8 @@ async function getRanks(limits = 1, delay = 0) {
     // result 的形状 = {
     //    专栏:[{...},{...},]
     //}
+    // 漫画区是由 bilibili漫画 管理的所以没有爬取
+    // 课堂没有排名
     let sheetName = ["动画", "番剧", "国产动画", "国创相关", "音乐", "舞蹈", "游戏", "知识", "数码", "生活", "美食", "鬼畜", "时尚", "娱乐", "电影", "电视剧", "影视", "纪录片"];
     let result = sheetName.reduce((all, i, index) => {
         all[i] = afterParse[index].rankList; // 只有rankList字段是保存了有效数据的
@@ -53,6 +55,7 @@ async function getRanks(limits = 1, delay = 0) {
     }).then((res) => res.json());
     result["专栏"] = Text.data;
 
+    console.log(result);
     // 直接进行下载
     await downloadExcel(result, "B站全区排行-" + new Date().getTime());
 }

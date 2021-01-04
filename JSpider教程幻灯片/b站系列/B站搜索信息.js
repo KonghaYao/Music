@@ -43,3 +43,4 @@ async function getSearchResult(keyword, delay = 1000, limits = 1) {
 
     await downloadSheet(afterParse, "搜索" + keyword + "的信息");
 }
+export { getSearchResult };
