@@ -1,5 +1,5 @@
 import { downloadExcel } from "./download.js";
-async function getRanks() {
+async function getRanks(limits = 1, delay = 0) {
     // 这是同一类的api下的URL的构建
     let urls = [
         "douga",
@@ -26,7 +26,11 @@ async function getRanks() {
         urls,
         returnType: "text",
         type: "start",
-        options: {},
+        options: {
+            cache: "force-cache",
+        },
+        limits,
+        time: delay,
     });
 
     // B站这个排名的数据全部使用 JS 代码中直接注入的方式导入
